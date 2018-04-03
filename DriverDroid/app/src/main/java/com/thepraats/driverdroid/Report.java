@@ -33,9 +33,10 @@ public class Report extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
+
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         mDatabase = FirebaseDatabase.getInstance().getReference();
-    }
+         }
     //location
     public void getLocation(View v) {
 
@@ -48,11 +49,11 @@ public class Report extends AppCompatActivity {
             if (location != null){
                 latti = location.getLatitude();
                 longi = location.getLongitude();
-                Toast.makeText(Report.this, String.valueOf("Lattitude: "+latti+"  Longitude: "+longi),Toast.LENGTH_SHORT).show();
+              Toast.makeText(Report.this, String.valueOf("Lattitude: "+latti+"  Longitude: "+longi),Toast.LENGTH_SHORT).show();
                 /*((EditText)findViewById(R.id.etLocationLat)).setText("Latitude: " + latti);
                 ((EditText)findViewById(R.id.etlocationLong)).setText("Longitude: " + longi);*/
             } else {
-                Toast.makeText(Report.this,"Unable to get location coordinates",Toast.LENGTH_SHORT).show();
+             Toast.makeText(Report.this,"Unable to get location coordinates",Toast.LENGTH_SHORT).show();
             }
         }
 
@@ -77,7 +78,7 @@ public class Report extends AppCompatActivity {
     public void reportIssue(View v){
         UploadIssue u=new UploadIssue(encoded, String.valueOf(latti), String.valueOf(longi));
         mDatabase.child("danger_coordinates").push().setValue(u);
-        Toast.makeText(Report.this,"Issue Reported",Toast.LENGTH_SHORT).show();
+//        Toast.makeText(Report.this,"Issue Reported",Toast.LENGTH_SHORT).show();
     }
 
 }
